@@ -1,12 +1,16 @@
 <?php
 // Определяем какую страницу показывать
-$page = isset($_GET['page']) ? $_GET['page'] : 'home';
+$page = isset($_GET['page']) ? $_GET['page'] : 'acquaintance';
 
 // Список доступных страниц
-$allowed_pages = ['home', 'about', 'contact', 'services'];
+$allowed_pages = ['home', 'about', 'contact', 'services', 'acquaintance', 'login', 'register'];
 if (!in_array($page, $allowed_pages)) {
     $page = 'home';
 }
+
+// Для страниц аутентификации не показываем шапку и сайдбар
+$auth_pages = ['login', 'register'];
+$show_layout = !in_array($page, $auth_pages);
 ?>
 
 <!DOCTYPE html>

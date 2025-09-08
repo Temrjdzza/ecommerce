@@ -401,3 +401,265 @@ body {
         margin: 0.5rem 0;
     }
 }
+
+/* Inline Auth Styles for content-section */
+.auth-container-inline {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.auth-card-inline {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e1e5e9;
+}
+
+.auth-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.auth-header h2 {
+    color: #2d3748;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.auth-header p {
+    color: #718096;
+    font-size: 15px;
+}
+
+.auth-form {
+    margin-bottom: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    color: #4a5568;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.form-group label i {
+    margin-right: 10px;
+    color: #667eea;
+    font-size: 15px;
+    width: 16px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid #e1e5e9;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background: #fff;
+    color: #2d3748;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input::placeholder {
+    color: #a0aec0;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 38px;
+    cursor: pointer;
+    color: #718096;
+    background: none;
+    border: none;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password:hover {
+    color: #667eea;
+}
+
+.toggle-password i {
+    font-size: 15px;
+}
+
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4a5568;
+}
+
+.checkbox-container input {
+    margin-right: 8px;
+    width: auto;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #e1e5e9;
+    border-radius: 4px;
+    margin-right: 8px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-container input:checked + .checkmark {
+    background: #667eea;
+    border-color: #667eea;
+}
+
+.checkbox-container input:checked + .checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.forgot-password {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.forgot-password:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+}
+
+.auth-button:active {
+    transform: translateY(0);
+}
+
+.auth-button i {
+    font-size: 15px;
+}
+
+.auth-footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #e1e5e9;
+}
+
+.auth-footer p {
+    color: #718096;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.auth-footer a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.auth-footer a:hover {
+    color: #5a67d8;
+    text-decoration: underline;
+}
+
+/* Responsive for inline auth */
+@media (max-width: 768px) {
+    .auth-card-inline {
+        padding: 25px 20px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .auth-header h2 {
+        font-size: 22px;
+    }
+    
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-card-inline {
+        padding: 20px 15px;
+    }
+    
+    .auth-header h2 {
+        font-size: 20px;
+    }
+    
+    .form-group input {
+        padding: 11px 13px;
+    }
+    
+    .auth-button {
+        padding: 12px;
+        font-size: 14px;
+    }
+}
