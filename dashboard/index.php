@@ -23,6 +23,9 @@ $show_layout = !in_array($page, $auth_pages);
     <link rel="stylesheet" href="stylesheets/style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="stylesheets/test.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 </head>
 <body>
     <!-- Встраеваем верхнее меню -->
@@ -42,5 +45,6 @@ $show_layout = !in_array($page, $auth_pages);
     <?php include 'pages/context/footer.php'; ?>
     
     <script src="./javascripts/main.js"></script>
+    <script src="./javascripts/test.js"></script>
 </body>
 </html>
