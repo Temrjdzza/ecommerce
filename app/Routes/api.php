@@ -1,4 +1,10 @@
 <?php
 
+//------ AuthController ---------------
 $router->post('/login', 'AuthController@login');
-//$router->get('/logout', 'AuthController@logout');
+
+//$router->post('/createUser', 'AuthController@Create');
+
+// ------ CurrenciesController --------------
+
+$router->get('/currencies','CurrenciesController@getCurrenciesHistory');
