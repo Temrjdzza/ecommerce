@@ -2,7 +2,7 @@
 
 ## Эндпоинты
 
-### 1. Аутентификация пользователя
+### Аутентификация пользователя
 
 ```
 POST /login
@@ -15,7 +15,56 @@ POST /login
 | username | string  | Имя пользователя | "admin"                           |
 | password     | string | Пароль пользователя   | "admin"                      |
 
-### 2. Market overview
+### Total profit
+
+```
+GET /totalProfit
+```
+
+Параметры запроса:
+
+| Параметр  | Тип     | Описание                  | Пример значения                  |
+|-----------|---------|---------------------------|----------------------------------|
+| period | string  | Выбор периода | day, week, month                           |
+
+Пример запроса:
+
+```
+GET /totalProfit?period=day
+```
+
+Ответ:
+
+
+```json
+{
+    "period": "week",
+    "total_profit": "3579.14",
+    "growth_percent": "77.98"
+}
+```
+
+### Кнопка View all orders
+
+```
+GET /orderList
+```
+Ответ:
+
+
+```json
+[
+    {
+        "order_id": 46,
+        "user_name": null,
+        "product_name": "Gaming Keyboard",
+        "quantity": 1,
+        "total_price": "75.50",
+        "created_at": "2025-09-07 20:06:10"
+    },
+```
+
+### Market overview
 
 ```
 GET /currencies
@@ -50,7 +99,7 @@ GET /currencies?crypto_id=bts&sort_by=day
 ]
 ```
 
-### 3. Best Selling Product
+### Best Selling Product
 
 ```
 GET /bestSelling
@@ -87,28 +136,8 @@ GET /bestSelling?page=3
 }
 ```
 
-#### Кнопка View all orders
 
-```
-GET /orderList
-```
-Ответ:
-
-
-```json
-[
-    {
-        "order_id": 46,
-        "user_name": null,
-        "product_name": "Gaming Keyboard",
-        "quantity": 1,
-        "total_price": "75.50",
-        "created_at": "2025-09-07 20:06:10"
-    },
-```
-
-
-### 4. Best Selling Product
+### Best Selling Product
 
 ```
 GET /topSellers
