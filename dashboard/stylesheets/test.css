@@ -1,0 +1,233 @@
+:root {
+            --bg-color: #f5f5f5;
+            --text-color: #333;
+            --card-bg: #fff;
+            --border-color: #ddd;
+        }
+
+        .dark-theme {
+            --bg-color: #1a1a1a;
+            --text-color: #fff;
+            --card-bg: #2d2d2d;
+            --border-color: #444;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Первый слой - блоки информации */
+        .info-block {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .info-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-title {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .info-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .info-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .info-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .prediction {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+
+        .arrow-up {
+            color: #00E396;
+            margin-right: 5px;
+        }
+
+        .arrow-down {
+            color: #FF4560;
+            margin-right: 5px;
+        }
+
+        .percentage {
+            font-size: 14px;
+        }
+
+        .positive {
+            color: #00E396;
+        }
+
+        .negative {
+            color: #FF4560;
+        }
+
+        .money-icon {
+            color: #00E396;
+            font-size: 20px;
+            margin-top: 5px;
+        }
+
+        /* Второй слой - диаграммы */
+        .market-overview {
+            grid-column: span 3;
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .pie-chart {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .time-filter {
+            display: flex;
+            gap: 15px;
+        }
+
+        .time-option {
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .time-option.active {
+            background-color: #008FFB;
+            color: white;
+        }
+
+        .crypto-filter {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            align-items: center;
+        }
+
+        .crypto-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .theme-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: auto;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #008FFB;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .chart-container {
+            width: 100%;
+            height: 300px;
+        }
+
+        .pie-container {
+            width: 100%;
+            height: 250px;
+        }
+
+        /* Стили для чекбоксов ApexCharts */
+        .crypto-option input[type="checkbox"] {
+            accent-color: #008FFB;
+        }
