@@ -264,3 +264,70 @@ GET /referrals?date=2025-09-08
     }
 ]
 ```
+
+### Store Visits By source
+
+```
+GET /portfolio
+```
+
+Пример запроса:
+
+```
+GET /portfolio?sort_by=price&order=desc&page=2
+```
+
+| Параметр  | Тип     | Описание                  | Пример значения                  | По умолчанию                  |
+|-----------|---------|---------------------------|----------------------------------|----------------------------------|
+| sort_by | string  | сортировка | Name, price, change_24h, total_balance, TotalCoin                           | Name
+| order | string  | Сортировка по возр/убыв |  asc, desc                          | asc
+| page | string  | Запрашиваемая страница |  1,2,3                          | 1
+
+Ответ:
+
+
+```json
+{
+    "page": 2,
+    "per_page": 5,
+    "total_items": 25,
+    "total_pages": 5,
+    "items": [
+        {
+            "Name": "solana",
+            "price": "235.22",
+            "change_24h": "-0.03",
+            "total_balance": "2903.95",
+            "TotalCoin": "12.34567890"
+        },
+        {
+            "Name": "uniswap",
+            "price": "9.32",
+            "change_24h": "1.79",
+            "total_balance": "239.10",
+            "TotalCoin": "25.65478932"
+        },
+        {
+            "Name": "polkadot",
+            "price": "4.24",
+            "change_24h": "1.30",
+            "total_balance": "234.99",
+            "TotalCoin": "55.42136987"
+        },
+        {
+            "Name": "cardano",
+            "price": "0.87",
+            "change_24h": "0.92",
+            "total_balance": "434.82",
+            "TotalCoin": "500.25478912"
+        },
+        {
+            "Name": "dogecoin",
+            "price": "0.27",
+            "change_24h": "1.00",
+            "total_balance": "3190.28",
+            "TotalCoin": "12000.56789123"
+        }
+    ]
+}
+```

@@ -27,3 +27,7 @@ $router->get('/storeVisits','TrafficSourceController@traffic');
 // ------ ReferralsController --------------
 
 $router->get('/referrals','ReferralsController@referrals');
+
+// ----------- PortfolioController --------------
+
+$router->get('/portfolio','PortfolioController@getPortfolio');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: localhost
--- Время создания: Сен 13 2025 г., 15:46
+-- Время создания: Сен 16 2025 г., 12:02
 -- Версия сервера: 10.4.32-MariaDB
 -- Версия PHP: 8.2.12
 
@@ -20,72 +20,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `ecommerce`
 --
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `currencies`
---
-
-CREATE TABLE `currencies` (
-  `id` int(11) NOT NULL,
-  `symbol` varchar(10) DEFAULT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `price` decimal(15,6) DEFAULT NULL,
-  `change_percent` decimal(6,2) DEFAULT NULL,
-  `volume` bigint(20) DEFAULT NULL,
-  `total` decimal(20,8) DEFAULT NULL,
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `currencies`
---
-
-INSERT INTO `currencies` (`id`, `symbol`, `name`, `price`, `change_percent`, `volume`, `total`, `updated_at`) VALUES
-(1, 'BTS', 'BitShares', 0.051200, 1.75, 8500000, 290000000.00000000, '2025-09-07 23:22:00'),
-(2, 'XRP', 'Ripple', 0.520000, 0.80, 50000000, 99000000.00000000, '2025-09-07 23:22:00'),
-(3, 'ETH', 'Ethereum', 1800.750000, -1.20, 80000000, 120000000.00000000, '2025-09-07 23:22:00'),
-(4, 'ZEC', 'Zcash', 32.750000, -2.10, 1500000, 16000000.00000000, '2025-09-07 23:22:00');
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `currency_history`
---
-
-CREATE TABLE `currency_history` (
-  `id` int(11) NOT NULL,
-  `currency_id` int(11) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  `price` decimal(15,6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `currency_history`
---
-
-INSERT INTO `currency_history` (`id`, `currency_id`, `date`, `price`) VALUES
-(1, 1, '2025-09-08', 0.051200),
-(2, 1, '2025-09-07', 0.050500),
-(3, 1, '2025-09-06', 0.050800),
-(4, 1, '2025-09-05', 0.050100),
-(5, 1, '2025-09-04', 0.049500),
-(6, 2, '2025-09-08', 0.520000),
-(7, 2, '2025-09-07', 0.510000),
-(8, 2, '2025-09-06', 0.530000),
-(9, 2, '2025-09-05', 0.500000),
-(10, 2, '2025-09-04', 0.490000),
-(11, 3, '2025-09-08', 1800.000000),
-(12, 3, '2025-09-07', 1815.000000),
-(13, 3, '2025-09-06', 1780.000000),
-(14, 3, '2025-09-05', 1820.000000),
-(15, 3, '2025-09-04', 1795.000000),
-(16, 4, '2025-09-08', 32.750000),
-(17, 4, '2025-09-07', 33.100000),
-(18, 4, '2025-09-06', 32.900000),
-(19, 4, '2025-09-05', 33.500000),
-(20, 4, '2025-09-04', 33.200000);
 
 -- --------------------------------------------------------
 
@@ -150,6 +84,52 @@ INSERT INTO `orders` (`id`, `user_id`, `product_id`, `quantity`, `total_price`, 
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `portfolios`
+--
+
+CREATE TABLE `portfolios` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `crypto_id` varchar(50) NOT NULL,
+  `amount` decimal(20,8) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `portfolios`
+--
+
+INSERT INTO `portfolios` (`id`, `user_id`, `crypto_id`, `amount`, `created_at`, `updated_at`) VALUES
+(6, 1, 'bitcoin', 0.25634801, '2025-09-16 09:02:20', '2025-09-16 09:02:20'),
+(7, 1, 'ethereum', 3.62912570, '2025-09-16 09:02:20', '2025-09-16 09:02:20'),
+(9, 1, 'zcash', 0.95632087, '2025-09-16 09:02:20', '2025-09-16 09:02:20'),
+(10, 1, 'ripple', 5.42136890, '2025-09-16 09:02:20', '2025-09-16 09:02:20'),
+(11, 1, 'litecoin', 15.12345678, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(12, 1, 'cardano', 500.25478912, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(13, 1, 'dogecoin', 12000.56789123, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(14, 1, 'solana', 12.34567890, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(15, 1, 'polkadot', 55.42136987, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(16, 1, 'uniswap', 25.65478932, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(17, 1, 'chainlink', 30.14785236, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(18, 1, 'avalanche', 8.52147896, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(19, 1, 'shiba-inu', 50000000.12345678, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(20, 1, 'stellar', 150.98765432, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(21, 1, 'binancecoin', 1.54789632, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(22, 1, 'tron', 8000.23568914, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(23, 1, 'tether', 2500.00000000, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(24, 1, 'cosmos', 45.78912365, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(25, 1, 'monero', 3.65478912, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(26, 1, 'algorand', 120.32165498, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(27, 1, 'vechain', 450.98712354, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(28, 1, 'decentraland', 80.56478912, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(29, 1, 'the-sandbox', 95.12365478, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(30, 1, 'fantom', 200.54789632, '2025-09-16 09:58:40', '2025-09-16 09:58:40'),
+(31, 1, 'polygon', 75.32145698, '2025-09-16 09:58:40', '2025-09-16 09:58:40');
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `products`
 --
 
@@ -183,24 +163,26 @@ INSERT INTO `products` (`id`, `seller_id`, `name`, `price`, `stock`, `sku`, `tot
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `referrals`
+-- Структура таблицы `property_referrals`
 --
 
-CREATE TABLE `referrals` (
+CREATE TABLE `property_referrals` (
   `id` int(11) NOT NULL,
-  `source` varchar(100) DEFAULT NULL,
-  `percentage` decimal(5,2) DEFAULT NULL,
-  `report_date` date DEFAULT NULL
+  `channel` varchar(100) NOT NULL,
+  `clicks` int(11) NOT NULL DEFAULT 0,
+  `report_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Дамп данных таблицы `referrals`
+-- Дамп данных таблицы `property_referrals`
 --
 
-INSERT INTO `referrals` (`id`, `source`, `percentage`, `report_date`) VALUES
-(1, 'Social Media', 45.50, '2025-09-08'),
-(2, 'Marketplaces', 30.00, '2025-09-08'),
-(3, 'Ads', 24.50, '2025-09-08');
+INSERT INTO `property_referrals` (`id`, `channel`, `clicks`, `report_date`) VALUES
+(1, 'Social Media', 1200, '2025-09-08'),
+(2, 'Marketplaces', 1088, '2025-09-08'),
+(3, 'Websites', 996, '2025-09-08'),
+(4, 'Digital Ads', 902, '2025-09-08'),
+(5, 'Others', 732, '2025-09-08');
 
 -- --------------------------------------------------------
 
@@ -270,12 +252,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `created_at`) VALUES
-(3, 'admin', 'Temridzza', '$2y$10$adRA97PDaIok7HEIf8nP4.05V3YmQZVK6viZ0aZI/FII6yX5r3PQi', 'admin', '2025-09-08 01:24:04'),
+(1, 'admin', 'Temridzza', '$2y$10$adRA97PDaIok7HEIf8nP4.05V3YmQZVK6viZ0aZI/FII6yX5r3PQi', 'admin', '2025-09-08 01:24:04'),
 (5, 'admin1', 'Temridzza1', '$2y$10$Trjel1zSqrXTZNTMLiVIe.78t7ibUW6aF1FdIKIvsdK8gIQZ19DoS', 'admin', '2025-09-08 01:42:54');
 
 --
 -- Индексы сохранённых таблиц
 --
+
+--
+-- Индексы таблицы `portfolios`
+--
+ALTER TABLE `portfolios`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Индексы таблицы `products`
@@ -285,9 +274,9 @@ ALTER TABLE `products`
   ADD KEY `seller_id` (`seller_id`);
 
 --
--- Индексы таблицы `referrals`
+-- Индексы таблицы `property_referrals`
 --
-ALTER TABLE `referrals`
+ALTER TABLE `property_referrals`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -314,16 +303,22 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT для таблицы `portfolios`
+--
+ALTER TABLE `portfolios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT для таблицы `referrals`
+-- AUTO_INCREMENT для таблицы `property_referrals`
 --
-ALTER TABLE `referrals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `property_referrals`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблицы `sellers`
@@ -346,6 +341,12 @@ ALTER TABLE `users`
 --
 -- Ограничения внешнего ключа сохраненных таблиц
 --
+
+--
+-- Ограничения внешнего ключа таблицы `portfolios`
+--
+ALTER TABLE `portfolios`
+  ADD CONSTRAINT `portfolios_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Ограничения внешнего ключа таблицы `products`
