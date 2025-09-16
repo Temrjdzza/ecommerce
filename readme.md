@@ -265,7 +265,7 @@ GET /referrals?date=2025-09-08
 ]
 ```
 
-### Store Visits By source
+### My currencies
 
 ```
 GET /portfolio
