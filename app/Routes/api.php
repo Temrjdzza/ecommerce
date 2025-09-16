@@ -19,3 +19,11 @@ $router->get('/bestSelling','ProductsController@bestSellingProducts');
 // ----------- SellersController ------------
 
 $router->get('/topSellers','SellersController@topSellers');
+
+// ------ TrafficSourceController -------------
+
+$router->get('/storeVisits','TrafficSourceController@traffic');
+
+// ------ ReferralsController --------------
+
+$router->get('/referrals','ReferralsController@referrals');

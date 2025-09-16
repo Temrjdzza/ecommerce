@@ -137,7 +137,7 @@ GET /bestSelling?page=3
 ```
 
 
-### Best Selling Product
+### Top Sellers
 
 ```
 GET /topSellers
@@ -171,3 +171,96 @@ GET /topSellers?page=1
         },
 ```
 
+### Store Visits By source
+
+```
+GET /storeVisits
+```
+
+Пример запроса:
+
+```
+GET /storeVisits?date=2025-09-08
+```
+
+| Параметр  | Тип     | Описание                  | Пример значения                  | По умолчанию                  |
+|-----------|---------|---------------------------|----------------------------------|----------------------------------|
+| sort_by | string  | сортировка | report, alphabet, visits_desc visits_asc                           | report
+| date | string  | запрашиваемая дата |  2025-09-08                          | curdate
+
+Ответ:
+
+
+```json
+[
+    {
+        "source": "Referral",
+        "total_visits": "400",
+        "percentage": "13.33"
+    },
+    {
+        "source": "Direct",
+        "total_visits": "600",
+        "percentage": "20.00"
+    },
+    {
+        "source": "Email",
+        "total_visits": "800",
+        "percentage": "26.67"
+    },
+    {
+        "source": "Social",
+        "total_visits": "1200",
+        "percentage": "40.00"
+    }
+]
+```
+
+### Property Referrals
+
+```
+GET /referrals
+```
+
+Пример запроса:
+
+```
+GET /referrals?date=2025-09-08
+```
+
+| Параметр  | Тип     | Описание                  | Пример значения                  | По умолчанию                  |
+|-----------|---------|---------------------------|----------------------------------|----------------------------------|
+| date | string  | запрашиваемая дата |  2025-09-08                          | curdate
+
+Ответ:
+
+
+```json
+[
+    {
+        "channel": "Social Media",
+        "clicks": 1200,
+        "percentage": "24.40"
+    },
+    {
+        "channel": "Marketplaces",
+        "clicks": 1088,
+        "percentage": "22.12"
+    },
+    {
+        "channel": "Websites",
+        "clicks": 996,
+        "percentage": "20.25"
+    },
+    {
+        "channel": "Digital Ads",
+        "clicks": 902,
+        "percentage": "18.34"
+    },
+    {
+        "channel": "Others",
+        "clicks": 732,
+        "percentage": "14.88"
+    }
+]
+```
